@@ -31,8 +31,6 @@ Where:
 
 Comments can be made on separate lines or at the end of a line with `//` (similar with C/C++/Java etc.).
 
-You can separate cases ([pattern] [action] [next_state] pairs) with newlines or `;` character.
-
 Alphabet: You can use any ASCII character for your alphabet with the exceptions of:
 - `*` (wildcard) - if used as a pattern it will match any character
 
@@ -46,9 +44,10 @@ The ending state is considered `accept`, the program will end after transitionin
 - [ ] add input method for tape instead of hardcoding
 - [ ] add function arguments to states
 - [ ] add the posibility of using flags
-- [ ] unit tests
+- [ ] unit tests for interpreter/preprocessor
 - [ ] add 2d tape
 - [ ] delete trailing '#' from tape ends
+- [ ] add more specific error system
 
 # Ideas
 - add `Y`/`N`/`H` accepting states instead of just `accept`
