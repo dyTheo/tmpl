@@ -11,6 +11,7 @@ parser_tests = do
         test_casep
         test_routinep
         test_programp
+        test_tapep
 
 test_actionp :: IO ()
 test_actionp = do
@@ -110,3 +111,26 @@ test_programp = do
                         Routine "q2" [Case '1' [R] "q2"]
                     ], ""))
               "testing program with multiple cases and routines"
+
+test_tapep :: IO ()
+test_tapep = do
+    putStrLn "\t[Testing tapep]"
+    assert (parse tapep "0") (Nothing) "testing tape with one character"
+    assert (parse tapep "0<0>0") 
+           (Just (Tape "0" '0' "0", "")) 
+           "testing tape with one character in each list"
+    assert (parse tapep "<0>0")
+           (Just (Tape [] '0' "0", "")) 
+           "testing tape with head at the beggining"
+    assert (parse tapep "0<0>")
+           (Just (Tape "0" '0' [], "")) 
+           "testing tape with head at the end"
+    assert (parse tapep "01<0>01")
+           (Just (Tape "01" '0' "01", "")) 
+           "testing tape with multiple characters in each list"
+    assert (parse tapep "0<01>0")
+            (Nothing)
+           "testing tape with multiple characters in the head"
+    assert (parse tapep "0<#>0")
+           (Just (Tape "0" '#' "0", "")) 
+           "testing tape with empty symbol in head"

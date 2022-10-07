@@ -34,3 +34,13 @@ programp = do
         routines <- starp routinep
         starp $ charp ';'
         return (Program routines)
+
+tapep :: Parser Tape
+tapep = do
+        ls <- starp $ predicatep (\x -> x /= '<')
+        charp '<'
+        h <- movep
+        charp '>'
+        rs <- starp $ predicatep (\x -> x /= ';')
+        starp $ charp ';'
+        return $ Tape ls h rs

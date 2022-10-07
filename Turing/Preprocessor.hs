@@ -9,7 +9,7 @@ convert_characters (x:xs) = case x of
 
 remove_comments :: String -> String
 remove_comments [] = []
-remove_comments ('/':'/':xs) = remove_comments (dropWhile (/= ';') xs)
+remove_comments ('/':'/':xs) = remove_comments (dropWhile (==';') (dropWhile (/= ';') xs))
 remove_comments (x:xs) = x:(remove_comments xs)
 
 preprocess :: String -> String

@@ -9,7 +9,7 @@ make build
 
 To run `filename.tm`:
 ```
-./turing filename.tm
+./turing filename.tm tape.t
 ```
 
 # Syntax
@@ -33,6 +33,7 @@ Comments can be made on separate lines or at the end of a line with `//` (simila
 
 Alphabet: You can use any ASCII character for your alphabet with the exceptions of:
 - `*` (wildcard) - if used as a pattern it will match any character
+- `<`, `>` - are used to mark the head in tape files (you can use them, but you will not be able to have them on the starting tape)
 
 **NOTE**: `#` is the empty symbol, any tape symbol that is not specified is by default `#` (i.e. the tape extends to infinity with `#` symbols in both directions).
 
@@ -40,8 +41,17 @@ The starting state is considered the `start` state, if the state is not defined 
 
 The ending state is considered `accept`, the program will end after transitioning to the `accept` state.
 
+# Tape
+You can start a tape file with as many `//` comment lines as you want.
+
+The first line without a comment will be considered the tape, with the head being placed between `<` and `>` characters.
+
+Every character is a separate cell of the tape.
+
+**NOTE**: If you want an empty tape, you will still need to provide a empty tape file with the string `<>`.
+
 # TODO
-- [ ] add input method for tape instead of hardcoding
+- [x] add input method for tape instead of hardcoding
 - [ ] add function arguments to states
 - [ ] add the posibility of using flags
 - [ ] unit tests for interpreter/preprocessor
