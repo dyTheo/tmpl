@@ -56,7 +56,7 @@ The first line without a comment will be considered the tape, with the head bein
 
 Every character is a separate cell of the tape.
 
-**NOTE**: If you want an empty tape, you will still need to provide a empty tape file with the string `<>`.
+**NOTE**: If you want an empty tape, you will still need to provide a empty tape file with the string `<#>`.
 
 # TODO
 - [x] add input method for tape instead of hardcoding
