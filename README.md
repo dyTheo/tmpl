@@ -39,7 +39,15 @@ Alphabet: You can use any ASCII character for your alphabet with the exceptions 
 
 The starting state is considered the `start` state, if the state is not defined the program will not run.
 
-The ending state is considered `accept`, the program will end after transitioning to the `accept` state.
+If you want another starting state you can use just add a redundant start state as follows:
+```
+start * H [starting_state]
+```
+
+The ending state are considered `Y`, `N` and `H`:
+- `Y` will accept the input
+- `N` will reject the input
+- `H` will halt and output the tape contents
 
 # Tape
 You can start a tape file with as many `//` comment lines as you want.
@@ -52,13 +60,10 @@ Every character is a separate cell of the tape.
 
 # TODO
 - [x] add input method for tape instead of hardcoding
+- [x] change `accept` state to `Y`/`N`/`H` states for accept/reject/halt
 - [ ] add function arguments to states
 - [ ] add the posibility of using flags
 - [ ] unit tests for interpreter/preprocessor
 - [ ] add 2d tape
 - [ ] delete trailing '#' from tape ends
 - [ ] add more specific error system
-
-# Ideas
-- add `Y`/`N`/`H` accepting states instead of just `accept`
-- maximum number of steps (to avoid infinite loops)

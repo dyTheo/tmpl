@@ -26,9 +26,13 @@ main = do
             case (p, t) of
                 (Just (p, _), Just (t, _)) -> do
                     let state = State t "start"
-                    
+                    let result = run_program state p
+
                     putStrLn $ "[" ++ (show t) ++ "]"
-                    putStrLn $ show (run_program state p)
+                    case result of
+                        (State _ "Y") -> putStrLn "Input accepted"
+                        (State _ "N") -> putStrLn "Input rejected"
+                        (State t "H") -> putStrLn $ show t
 
                 (Nothing, _) -> putStrLn "Error parsing input"
                 (_, Nothing) -> putStrLn "Error parsing tape"

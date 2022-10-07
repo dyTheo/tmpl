@@ -34,7 +34,9 @@ move_right (Tape ls h (r:rs)) = (Tape (h:ls) r rs)
 printc :: Char -> Tape -> Tape
 printc c (Tape l h r) = (Tape l c r)
 
-run_program :: State -> Program -> Tape
+run_program :: State -> Program -> State 
 run_program s p
-    | (state s) == "accept" = tape s
+    | (state s) == "Y" = s
+    | (state s) == "N" = s
+    | (state s) == "H" = s
     | otherwise = run_program (next_state p s) p
